@@ -1,5 +1,6 @@
 <script>
-  let newItem = '';
+
+let newItem = '';
 
 let todoList = [
   {
@@ -27,4 +28,12 @@ let todoList = [
     status: false
   },
 ];
+
+function addToList() {
+  todoList = [...todoList, {text: newItem, status: false}];
+  newItem = '';
+}
+
+</script>
+
 
