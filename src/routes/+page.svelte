@@ -34,6 +34,11 @@ function addToList() {
   newItem = '';
 }
 
+function removeFromList(index) {
+  todoList.splice(index, 1)
+  todoList = todoList;
+  }
+
 </script>
 
 
