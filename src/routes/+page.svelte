@@ -41,4 +41,20 @@ function removeFromList(index) {
 
 </script>
 
+<main>
+
+{#each todoList as { text, status }, index}
+  <div style={status ? 'text-decoration: line-through;' : ''}>
+    {text}
+    <button on:click={() => removeFromList(index)}>Remove</button>
+  </div>
+{/each}
+
+<input bind:value={newItem} placeholder="Enter new task" />
+<button on:click={addToList}>Add Task</button>
+
+</main>
+
+
+
 
