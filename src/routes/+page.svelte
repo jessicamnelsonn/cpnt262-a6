@@ -30,7 +30,6 @@ let todoList = [
   },
 ];
 
-
 function addToList() {
   todoList = [...todoList, {text: newItem, status: false}];
   newItem = '';
@@ -41,9 +40,9 @@ function removeFromList(index) {
   todoList = todoList;
 }
 
-function handleMessage(event) {
-		alert(event.detail.text);
-	}
+function handleTaskAdded(event) {
+  alert(event.detail.message);
+}
 
 </script>
 
@@ -60,10 +59,10 @@ function handleMessage(event) {
 
   <section class="flex items-center mb-4">
     <input class="flex-1 p-2 border border-gray-300 rounded-md" bind:value={newItem} placeholder="Enter new task" />
-    <button class="ml-4 px-6 py-2 bg-blue-500 text-white rounded-md" on:click={addToList}>Add Task</button>
+    <button class="ml-4 px-6 py-2 bg-blue-500 text-white rounded-md" on:click={addToList} >Add Task</button>
   </section>
-
-  <EventDispatcher on:message={handleMessage} />
+  
+  <EventDispatcher on:taskAdded={handleTaskAdded} />
 
   </main>
 

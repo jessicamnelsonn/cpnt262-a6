@@ -3,11 +3,11 @@
   
   const dispatch = createEventDispatcher();
 
-  function sayHello() {
-		dispatch('message', {
-			text: 'Hello!'
-		});
-	}
+  function addTask() {
+    dispatch('taskAdded', {
+      message: 'New task added!',
+    });
+  }
 </script>
 
-<button on:click={sayHello}> Click to say hello </button>
+<button on:click={addTask}>Add Task</button>
