@@ -11,3 +11,7 @@ Description: Needed help figuring out how event dispatchers worked
     - Useful Keywords: "Svelte", "Component events"
 2. [Svelte component event examples] (https://svelte.dev/examples/component-events (example)
     - I added "examples" to make the search more specific and gain a deeper understanding of how component events are used.
+
+## Attributions
+- [Todo List](https://svelte.dev/repl/7eb8c1dd6cac414792b0edb53521ab49?version=3.20.1)
+- [Component Events](https://svelte.dev/examples/component-events)
