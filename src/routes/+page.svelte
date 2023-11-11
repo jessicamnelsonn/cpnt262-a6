@@ -1,4 +1,5 @@
 <script>
+import EventDispatcher from '../lib/components/EventDispatcher.svelte'
 
 let newItem = '';
 
@@ -29,6 +30,7 @@ let todoList = [
   },
 ];
 
+
 function addToList() {
   todoList = [...todoList, {text: newItem, status: false}];
   newItem = '';
@@ -37,7 +39,11 @@ function addToList() {
 function removeFromList(index) {
   todoList.splice(index, 1)
   todoList = todoList;
-  }
+}
+
+function handleMessage(event) {
+		alert(event.detail.text);
+	}
 
 </script>
 
@@ -57,7 +63,9 @@ function removeFromList(index) {
     <button class="ml-4 px-6 py-2 bg-blue-500 text-white rounded-md" on:click={addToList}>Add Task</button>
   </section>
 
-</main>
+  <EventDispatcher on:message={handleMessage} />
+
+  </main>
 
 
 
