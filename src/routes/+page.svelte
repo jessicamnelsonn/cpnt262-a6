@@ -1,5 +1,6 @@
 <script>
 import EventDispatcher from '../lib/components/EventDispatcher.svelte'
+import ExtraComponent from '../lib/components/ExtraComponent.svelte';
 
 let newItem = '';
 
@@ -32,7 +33,6 @@ let todoList = [
 
 function removeFromList(index) {
   todoList.splice(index, 1)
-  todoList = todoList;
 }
 
 function handleTaskAdded(event) {
@@ -56,16 +56,17 @@ function handleTaskAdded(event) {
   <h1 class="text-center text-4xl p-2">To-Do List</h1>
 
   {#each todoList as { text, status }, index}
-    <div class="flex items-center justify-between bg-white rounded-md p-4 mb-4 shadow-md">
+    <section class="flex items-center justify-between bg-white rounded-md p-4 mb-4 shadow-md">
       <span class="{status ? 'line-through text-gray-500' : 'text-black'}">{text}</span>
       <button class="ml-2 px-4 py-2 bg-red-500 text-white rounded-md" on:click={() => removeFromList(index)}>Remove</button>
-    </div>
+    </section>
   {/each}
 
   <section class="flex items-center mb-4">
     <input class="flex-1 p-2 border border-gray-300 rounded-md" bind:value={newItem} placeholder="Enter new task" />
-    <EventDispatcher on:taskAdded={handleTaskAdded}>
-    </EventDispatcher>
+    <ExtraComponent title="Task Tracker">
+      <EventDispatcher on:taskAdded={handleTaskAdded}></EventDispatcher>
+    </ExtraComponent>
   </section>
   
   </main>

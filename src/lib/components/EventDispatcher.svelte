@@ -10,4 +10,4 @@
   }
 </script>
 
-<button on:click={addToList} class="ml-4 px-6 py-2 bg-blue-500 text-white rounded-md">Add Task</button>
+<button on:click={addToList} class="px-6 py-2 bg-blue-500 text-white rounded-md">Add Task</button>
