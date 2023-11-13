@@ -31,9 +31,11 @@ let todoList = [
 ];
 
 function addToList() {
-  todoList = [...todoList, {text: newItem, status: false}];
-  newItem = '';
-}
+    if (newItem) {
+      todoList = [...todoList, { text: newItem, status: false }];
+      newItem = ''; 
+    }
+  }
 
 function removeFromList(index) {
   todoList.splice(index, 1)
@@ -42,6 +44,10 @@ function removeFromList(index) {
 
 function handleTaskAdded(event) {
   alert(event.detail.message);
+  if (newItem) {
+    todoList = [...todoList, { text: newItem, status: false }];
+    newItem = '';
+  }
 }
 
 </script>
@@ -59,11 +65,11 @@ function handleTaskAdded(event) {
 
   <section class="flex items-center mb-4">
     <input class="flex-1 p-2 border border-gray-300 rounded-md" bind:value={newItem} placeholder="Enter new task" />
-    <button class="ml-4 px-6 py-2 bg-blue-500 text-white rounded-md" on:click={addToList} >Add Task</button>
+    <EventDispatcher on:taskAdded={handleTaskAdded}>
+      <button on:click={addToList}>Add Task</button>
+    </EventDispatcher>
   </section>
   
-  <EventDispatcher on:taskAdded={handleTaskAdded} />
-
   </main>
 
 
