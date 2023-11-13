@@ -1,5 +1,5 @@
 <script>
-  // Importing components
+// Importing components
 import EventDispatcher from '../lib/components/EventDispatcher.svelte'
 import ExtraComponent from '../lib/components/ExtraComponent.svelte';
 
@@ -33,15 +33,22 @@ let todoList = [
   },
 ];
 
+
 // Function to remove an item from the todoList
 function removeFromList(index) {
+  // Remove the item at the specified index
   todoList.splice(index, 1)
+  // Update the todoList state
+  todoList = todoList;
 }
 
 // Function to handle the addition of a new task
 function handleTaskAdded(event) {
+  // Display an alert with a message from the event
   alert(event.detail.message);
+  // Check if newItem is not empty before adding it to the todoList
   if (newItem) {
+    // Add the new task to the todoList
     todoList = [
       ...todoList, 
     { 
@@ -49,8 +56,18 @@ function handleTaskAdded(event) {
       status: false 
     }
   ];
+    // Reset newItem after adding it to the list
     newItem = '';
   }
+}
+
+// State variable for button color
+let buttonColor = 'red';
+
+// Function to change the button color
+function changeButtonColor() {
+  // Toggle between red and blue
+  buttonColor = buttonColor === 'red' ? 'purple' : 'red';
 }
 
 </script>
@@ -66,7 +83,7 @@ function handleTaskAdded(event) {
       <!-- Display task text with strikethrough if completed -->
       <span class="{status ? 'line-through text-gray-500' : 'text-black'}">{text}</span>
       <!-- Button to remove the task -->
-      <button class="ml-2 px-4 py-2 bg-red-500 text-white rounded-md" on:click={() => removeFromList(index)}>Remove</button>
+      <button class="ml-2 px-4 py-2 text-white rounded-md" on:click={() => { removeFromList(index); changeButtonColor(); }} style="background-color: {buttonColor}">Remove</button>
     </section>
   {/each}
 
@@ -78,7 +95,7 @@ function handleTaskAdded(event) {
       <EventDispatcher on:taskAdded={handleTaskAdded}></EventDispatcher>
     </ExtraComponent>
   </section>
-  
+
   </main>
 
 
